@@ -14,26 +14,46 @@ datasource db {
 }
 
 model user {
-  id         String     @id @default(auto()) @map("_id") @db.ObjectId
-  email      String     @unique
+  id         String       @id @default(auto()) @map("_id") @db.ObjectId
+  email      String       @unique
   first_name String?
   last_name  String?
   password   String
-  role       String     @default("USER")
+  role       String
   supplies   supply[]
   buyOrders  buyOrder[]
+  priceCheck priceCheck[]
+  product    product[]
+  buyProcess buyProcess[]
 }
 
 model companies {
-  id          String          @id @default(auto()) @map("_id") @db.ObjectId
+  id          String         @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   description String
   location    String
-  supply_list supply_offers[]
+  supply_list supplyOffers[]
   buyOrders   buyOrder[]
+  priceCheck  priceCheck[]
+  buyProcess  buyProcess[]
 }
 
-model supply_offers {
+model product {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  description    String
+  stock          Int
+  price          Float
+  user           user         @relation(fields: [userId], references: [id])
+  userId         String       @db.ObjectId
+  suppliesNeeded supply[]
+  buyOrders      buyOrder[]
+  priceCheck     priceCheck[]
+  graphCP        graphCP[]
+  graphABC       graphABC[]
+}
+
+model supplyOffers {
   id           String    @id @default(auto()) @map("_id") @db.ObjectId
   name         String
   description  String
@@ -44,30 +64,123 @@ model supply_offers {
 }
 
 model supply {
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   description String
   stock       Int
-  user        user       @relation(fields: [userId], references: [id])
-  userId      String     @db.ObjectId
+  user        user         @relation(fields: [userId], references: [id])
+  userId      String       @db.ObjectId
   buyOrders   buyOrder[]
+  priceCheck  priceCheck[]
+  product     product?     @relation(fields: [productId], references: [id])
+  productId   String?      @db.ObjectId
 }
 
 model buyOrder {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  supply         supply    @relation(fields: [supplyId], references: [id])
-  supplyId       String    @db.ObjectId
+  id               String       @id @default(auto()) @map("_id") @db.ObjectId
+  supply           supply       @relation(fields: [supplyId], references: [id])
+  supplyId         String       @db.ObjectId
+  quantity         Int
+  receivedQuantity Int
+  itemTax          Float?
+  item_price       Float
+  discount         Float?
+  subtotal_price   Float
+  total_taxPrice   Float?
+  total_price      Float
+  user             user         @relation(fields: [userId], references: [id])
+  userId           String       @db.ObjectId
+  company          companies    @relation(fields: [companyId], references: [id])
+  companyId        String       @db.ObjectId
+  status           String
+  created_at       DateTime     @default(now())
+  updated_at       DateTime     @updatedAt
+  notes            String?
+  product          product?     @relation(fields: [productId], references: [id])
+  productId        String?      @db.ObjectId
+  buyProcess       buyProcess[]
+}
+
+model priceCheck {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  supply         supply       @relation(fields: [supplyId], references: [id])
+  supplyId       String       @db.ObjectId
   quantity       Int
-  tax            Float?
-  taxPrice       Float?
+  itemTax        Float?
+  item_price     Float
   discount       Float?
+  subtotal_price Float
   total_taxPrice Float?
   total_price    Float
-  user           user      @relation(fields: [userId], references: [id])
-  userId         String    @db.ObjectId
-  company        companies @relation(fields: [companyId], references: [id])
-  companyId      String    @db.ObjectId
-  status         String
-  created_at     DateTime  @default(now())
-  updated_at     DateTime  @updatedAt
+  user           user         @relation(fields: [userId], references: [id])
+  userId         String       @db.ObjectId
+  company        companies    @relation(fields: [companyId], references: [id])
+  companyId      String       @db.ObjectId
+  created_at     DateTime     @default(now())
+  updated_at     DateTime     @updatedAt
+  product        product?     @relation(fields: [productId], references: [id])
+  productId      String?      @db.ObjectId
+  buyProcess     buyProcess[]
+}
+
+model graphABC {
+  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
+  product            product @relation(fields: [productId], references: [id])
+  productId          String  @db.ObjectId
+  inStock            Int
+  price              Float
+  soldUnits          Int
+  profitMargin       Float
+  classification     String
+  SoldTotal          Float
+  buyPrice           Float
+  participation      Float
+  addedParticipation Float
+}
+
+model graphCP {
+  id                  String  @id @default(auto()) @map("_id") @db.ObjectId
+  product             product @relation(fields: [productId], references: [id])
+  productId           String  @db.ObjectId
+  qualityEvaluation   String
+  historicalDeviation Float
+  superiorLimit       Float
+  inferiorLimit       Float
+  productScore        Float
+  processMean         Float
+}
+
+model statusReport {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  status      String
+  description String
+  risks       String
+  problems    String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
+
+model buyProcess {
+  id                 String               @id @default(auto()) @map("_id") @db.ObjectId
+  status             String
+  user               user                 @relation(fields: [userId], references: [id])
+  userId             String               @db.ObjectId
+  company            companies            @relation(fields: [companyId], references: [id])
+  companyId          String               @db.ObjectId
+  buyOrder           buyOrder?            @relation(fields: [buyOrderId], references: [id])
+  buyOrderId         String               @db.ObjectId
+  priceCheck         priceCheck?          @relation(fields: [priceCheckId], references: [id])
+  priceCheckId       String               @db.ObjectId
+  documentURL        String
+  created_at         DateTime             @default(now())
+  updated_at         DateTime             @updatedAt
+  comments           String?
+  buyProcessHistoric buyProcessHistoric[]
+}
+
+model buyProcessHistoric {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  status       String
+  buyProcess   buyProcess @relation(fields: [buyProcessId], references: [id])
+  buyProcessId String     @db.ObjectId
 }

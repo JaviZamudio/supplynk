@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  email      String     @unique
+  first_name String?
+  last_name  String?
+  password   String
+  role       String     @default("USER")
+  supplies   supply[]
+  buyOrders  buyOrder[]
+}
+
+model companies {
+  id          String          @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  location    String
+  supply_list supply_offers[]
+  buyOrders   buyOrder[]
+}
+
+model supply_offers {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  description  String
+  price        Float
+  origin_point String
+  company      companies @relation(fields: [companyId], references: [id])
+  companyId    String    @db.ObjectId
+}
+
+model supply {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  stock       Int
+  user        user       @relation(fields: [userId], references: [id])
+  userId      String     @db.ObjectId
+  buyOrders   buyOrder[]
+}
+
+model buyOrder {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  supply         supply    @relation(fields: [supplyId], references: [id])
+  supplyId       String    @db.ObjectId
+  quantity       Int
+  tax            Float?
+  taxPrice       Float?
+  discount       Float?
+  total_taxPrice Float?
+  total_price    Float
+  user           user      @relation(fields: [userId], references: [id])
+  userId         String    @db.ObjectId
+  company        companies @relation(fields: [companyId], references: [id])
+  companyId      String    @db.ObjectId
+  status         String
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @updatedAt
+}

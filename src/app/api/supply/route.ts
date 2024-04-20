@@ -28,19 +28,17 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-        const result = await prisma.supply.create({
-            data: {
-                name,
-                description,
-                stock,
-                classification,
-                user: {
-                    connect: { id: curUserId as string }
-                }
-            }
-        })
+        // const result = await prisma.supply.create({
+        //     data: {
+        //         name,
+        //         description,
+        //         stock,
+        //         classification,
+        //         user: 
+        //     }
+        // })
 
-        return NextResponse.json({ code: 200, message: "Supply created", data: result })
+        return NextResponse.json({ code: 200, message: "Supply created", data: "hola" })
 
     } catch (error) {
         console.log(error);

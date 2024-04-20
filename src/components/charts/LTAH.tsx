@@ -1,10 +1,12 @@
+import { Card } from "@nextui-org/react";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import type { ChartData, ChartArea } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
 ChartJS.register(
     CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-export const options = {
+const options = {
     responsive: true,
     plugins: {
         legend: {
@@ -17,7 +19,7 @@ export const options = {
     },
 };
 
-export const data = {
+const data = {
     labels: ['Enero', 'Febrero', 'Marzo'],
     datasets: [
         {
@@ -41,6 +43,12 @@ export const data = {
     ],
 }
 
-export function LTAH() {
-    return <Line options={options} data={data} />
+export default function LTAH() {
+    return (
+
+        <Card className="w-2/5	m-2 flex justify-center">
+            <Line options={options} data={data} className="w-full" />
+        </Card>
+
+    )
 }

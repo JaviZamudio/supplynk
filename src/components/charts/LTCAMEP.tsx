@@ -1,10 +1,11 @@
+import { Card } from "@nextui-org/react";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
 ChartJS.register(
     CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-export const options = {
+const options = {
     responsive: true,
     plugins: {
         legend: {
@@ -12,12 +13,12 @@ export const options = {
         },
         title: {
             display: true,
-            text: 'Historial % de venta ABC',
+            text: 'Analysis CAMEP',
         },
     },
 };
 
-export const data = {
+const data = {
     labels: ['Enero', 'Febrero', 'Marzo'],
     datasets: [
         {
@@ -44,6 +45,10 @@ export const data = {
     ],
 }
 
-export function LTCAMEP() {
-    return <Line options={options} data={data} />
+export default function LTCAMEP() {
+    return (
+        <Card className="w-2/5	m-2">
+            <Line options={options} data={data} />
+        </Card>
+    )
 }

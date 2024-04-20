@@ -1,9 +1,10 @@
+import { Card } from "@nextui-org/react";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export const options = {
+const options = {
     responsive: true,
     plugins: {
         legend: {
@@ -20,7 +21,7 @@ const labels = ['Tornillos', 'Placas', 'Destornillador'];
 
 
 
-export const data = {
+const data = {
     labels: labels,
     datasets: [
         {
@@ -31,6 +32,12 @@ export const data = {
     ],
 }
 
-export function BTAI() {
-    return <Bar options={options} data={data} />;
+export default function BTAI() {
+    return (
+        <Card className="w-2/5	m-2">
+            <Bar options={options} data={data} />
+        </Card>
+
+
+    )
 }

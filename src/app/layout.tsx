@@ -7,6 +7,8 @@ import "./globals.css";
 import GlobalProviders from "@/contexts/GlobalProviders";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,21 +25,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-      </head>
+      <UserProvider>
+        <head>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        </head>
 
-      <body className={inter.className}>
+        <body className={inter.className}>
 
-        <GlobalProviders>
+          <GlobalProviders>
 
-          <Sidebar />
+            <Sidebar />
 
-          <main className="flex-1 flex flex-col p-4">
-            {children}
-          </main>
-        </GlobalProviders>
-      </body>
+            <main className="flex-1 flex flex-col p-4">
+              {children}
+            </main>
+          </GlobalProviders>
+        </body>
+      </UserProvider>
     </html>
   );
 }

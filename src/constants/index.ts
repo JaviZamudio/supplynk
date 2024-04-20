@@ -1,32 +1,3 @@
-export const sidebarLinks = [
-    {
-        icon: 'home',
-        route: '/',
-        label: 'Home',
-    },
-
-    {
-        icon: 'engineering',
-        route: '/Proveedores',
-        label: 'Proveedores',
-    },
-    {
-        icon: 'assignment',
-        route: '/previous',
-        label: 'Documentos',
-    },
-    {
-        icon: 'table',
-        route: '/recordings',
-        label: 'Datos',
-    },
-    {
-        icon: 'monitoring',
-        route: '/personal-room',
-        label: 'Analisis',
-    },
-];
-
 interface Item {
     icon: string;
     route: string;
@@ -47,12 +18,12 @@ export const sidebar: Sidebar = [
         items: [
             {
                 icon: 'home',
-                route: '/',
+                route: '/home',
                 label: 'Home',
             },
             {
                 icon: 'engineering',
-                route: '/Proveedores',
+                route: '/supliers',
                 label: 'Datos',
             },
         ],
@@ -63,12 +34,12 @@ export const sidebar: Sidebar = [
         items: [
             {
                 icon: 'engineering',
-                route: '/Proveedores',
+                route: '/analysis/ABC',
                 label: 'ABC',
             },
             {
                 icon: 'assignment',
-                route: '/previous',
+                route: '/analysis/CPK',
                 label: 'CP y CPK',
             },
         ],
@@ -79,12 +50,12 @@ export const sidebar: Sidebar = [
         items: [
             {
                 icon: 'engineering',
-                route: '/Proveedores',
+                route: '/suppliers',
                 label: 'Proveedores',
             },
             {
                 icon: 'assignment',
-                route: '/previous',
+                route: '/documents',
                 label: 'Documentos',
             },
         ],
@@ -95,7 +66,7 @@ export const sidebar: Sidebar = [
         items: [
             {
                 icon: 'engineering',
-                route: '/Proveedores',
+                route: '/suppliers',
                 label: 'Proveedores',
             },
             {

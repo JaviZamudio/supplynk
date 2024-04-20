@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PATCH(request: NextRequest) {
-    const { id, name, description, stock, classification, userId, productId } =
+    const { id, name, description, stock, classification } =
         await request.json() as supply;
 
     if (!id || !name || !description || !stock || !classification) {

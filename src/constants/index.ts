@@ -23,7 +23,7 @@ export const sidebar: Sidebar = [
             },
             {
                 icon: 'engineering',
-                route: '/supliers',
+                route: '/data',
                 label: 'Datos',
             },
         ],
@@ -33,14 +33,19 @@ export const sidebar: Sidebar = [
         title: 'Analisis',
         items: [
             {
-                icon: 'engineering',
+                icon: 'trending_up',
                 route: '/analysis/ABC',
                 label: 'ABC',
             },
             {
-                icon: 'assignment',
-                route: '/analysis/CPK',
+                icon: 'monitoring',
+                route: '/analysis/CP',
                 label: 'CP y CPK',
+            },
+            {
+                icon: 'area_chart',
+                route: '/analysis/CAMEP',
+                label: 'Camep',
             },
         ],
     },
@@ -48,11 +53,6 @@ export const sidebar: Sidebar = [
     {
         title: 'Documentos',
         items: [
-            {
-                icon: 'engineering',
-                route: '/suppliers',
-                label: 'Proveedores',
-            },
             {
                 icon: 'assignment',
                 route: '/documents',
@@ -68,12 +68,7 @@ export const sidebar: Sidebar = [
                 icon: 'engineering',
                 route: '/suppliers',
                 label: 'Proveedores',
-            },
-            {
-                icon: 'assignment',
-                route: '/previous',
-                label: 'Documentos',
-            },
+            }
         ],
     }
 

@@ -44,19 +44,19 @@ const data = {
             label: 'A-Proxima',
             data: [NaN, NaN, 65, 70, 50, 90],
             backgroundColor: 'rgba(5, 102, 141, 0.5)',
-            borderColor: 'rgb(5, 102, 141)',
+            borderColor: 'rgba(5, 102, 141, 0.4)',
         },
         {
             label: 'B-Proxima',
             data: [NaN, NaN, 18, 20, 30, 7],
             backgroundColor: 'rgba(103, 148, 54, 0.5)',
-            borderColor: 'rgb(103, 148, 54)',
+            borderColor: 'rgba(103, 148, 54, 0.4)',
         },
         {
             label: 'C',
             data: [NaN, NaN, 17, 10, 20, 3],
             backgroundColor: 'rgba(235, 242, 42, 0.5)',
-            borderColor: 'rgb(235, 242, 42)',
+            borderColor: 'rgba(235, 242, 42, 0.4)',
         },
     ],
 }

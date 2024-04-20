@@ -40,7 +40,7 @@ const data = {
 
 export default function DTAP() {
     return (
-        <Card className="w-2/5	m-2">
+        <Card className="w-full	p-4 row-span-2 justify-center">
             <Doughnut options={options} data={data} />
         </Card>
     )

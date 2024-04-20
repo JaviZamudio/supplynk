@@ -28,14 +28,14 @@ const config: Config = {
             foreground: "#fff",
             DEFAULT: "#28a745"
           },
-          warning: {
-            foreground: "#fff",
-            DEFAULT: "#ffc107"
-          },
-          danger: {
-            foreground: "#fff",
-            DEFAULT: "#dc3545"
-          },
+          // warning: {
+          //   foreground: "#fff",
+          //   DEFAULT: "#ffc107"
+          // },
+          // danger: {
+          //   foreground: "#fff",
+          //   DEFAULT: "#dc3545"
+          // },
         }
       }
     }

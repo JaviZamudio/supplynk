@@ -1,13 +1,14 @@
 "use client"
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
-import LTAFP from "@/components/charts/LTAFP";
-
+import BTCP from "@/components/charts/BTCP";
+import BTCPK from "@/components/charts/BTCPK";
 
 export default function Home() {
   return (
     <main>
-      <LTAFP />
+      <BTCP />
+      <BTCPK />
       <Button color="primary">Click me</Button>
       <Button color="secondary">Click me</Button>
     </main>

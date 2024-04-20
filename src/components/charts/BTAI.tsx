@@ -5,7 +5,6 @@ import { Bar } from "react-chartjs-2";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const options = {
-    responsive: true,
     plugins: {
         legend: {
             position: 'top' as const,
@@ -17,7 +16,7 @@ const options = {
     },
 };
 
-const labels = ['Tornillos', 'Placas', 'Destornillador'];
+const labels = ['Martillos', 'Destornillador', 'Tornillo', 'Pintura Blanca'];
 
 
 
@@ -26,18 +25,26 @@ const data = {
     datasets: [
         {
             label: 'A',
-            data: [23, 10, 5],
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            data: [100, 150, NaN, NaN],
+            backgroundColor: 'rgba(5, 102, 141, 1)',
+        },
+        {
+            label: 'B',
+            data: [NaN, NaN, 1000, NaN],
+            backgroundColor: 'rgba(103, 148, 54, 1)',
+        },
+        {
+            label: 'C',
+            data: [NaN, NaN, NaN, 200],
+            backgroundColor: 'rgba(235, 242, 42, 1)',
         },
     ],
 }
 
 export default function BTAI() {
     return (
-        <Card className="w-2/5	m-2">
-            <Bar options={options} data={data} />
+        <Card className="w-full p-4">
+            <Bar className="w-full h-full" options={options} data={data} />
         </Card>
-
-
     )
 }

@@ -46,7 +46,7 @@ const data = {
 export default function LTAH() {
     return (
 
-        <Card className="w-2/5	m-2 flex justify-center">
+        <Card className="w-full p-4">
             <Line options={options} data={data} className="w-full" />
         </Card>
 

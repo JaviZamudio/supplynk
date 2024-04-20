@@ -19,25 +19,25 @@ const options = {
 };
 
 const data = {
-    labels: ['Enero', 'Febrero', 'Marzo'],
+    labels: ['500', '1000', '1250', '2000', '3000', '4000'],
     datasets: [
         {
-            label: 'A',
-            data: [50, 80, 65],
+            label: 'CAMEP',
+            data: [4000, 3000, 2500, 2800, 4100, 4600],
             backgroundColor: 'rgba(5, 102, 141, 0.5)',
             borderColor: 'rgb(5, 102, 141)',
             tension: 0.4
         },
         {
-            label: 'B',
-            data: [30, 15, 18],
+            label: 'Costo Anual de Mantenimiento',
+            data: [480, 960, 1250, 1920, 2880, 3840],
             backgroundColor: 'rgba(103, 148, 54, 0.5)',
             borderColor: 'rgb(103, 148, 54)',
             tension: 0.4
         },
         {
-            label: 'C',
-            data: [20, 5, 17],
+            label: 'Costo Anual de Pedidos',
+            data: [4700, 1850, 1250, 1000, 500, 250],
             backgroundColor: 'rgba(235, 242, 42, 0.5)',
             borderColor: 'rgb(235, 242, 42)',
             tenson: 0.4
@@ -47,7 +47,7 @@ const data = {
 
 export default function LTCAMEP() {
     return (
-        <Card className="w-2/5	m-2">
+        <Card className="w-full p-4 col-span-2 max-w-3xl mx-auto">
             <Line options={options} data={data} />
         </Card>
     )

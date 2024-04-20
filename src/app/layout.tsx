@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable @next/next/google-font-display */
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -8,6 +7,7 @@ import GlobalProviders from "@/contexts/GlobalProviders";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { usePathname } from "next/navigation";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -36,7 +36,7 @@ export default function RootLayout({
 
             <Sidebar />
 
-            <main className="p-4 w-full h-full overflow-y-auto">
+            <main className={`p-4  w-full h-full overflow-y-auto`}>
               {children}
             </main>
           </GlobalProviders>

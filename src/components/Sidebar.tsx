@@ -17,7 +17,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <section className='flex flex-grow flex-col w-full max-w-60 justify-between bg-primary text-primary-foreground p-4'>
+      <section className={`flex flex-grow flex-col w-full max-w-60 justify-between bg-primary text-primary-foreground p-4 ${pathname === "/landing" && 'hidden'}`}>
         <div className='flex flex-col items-center justify-center my-4'>
           <Image
             src="/logo.svg"

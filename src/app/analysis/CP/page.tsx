@@ -17,56 +17,176 @@ interface Request {
     valorCP: number;
     valorCPK: number;
 }
-
+//['Barras de Metal', 'Vigas de Metal', 'Calderos', 'Llaves', 'Tenedores', 'Cucharas', 'Cuchillos']
 const requests: { myRequests: Request[] } = {
     myRequests: [
         {
-            nombre: "Martillo",
+            nombre: "Barras de Metal",
             lote: 1,
-            indiceLote: 10,
-            indiceEstablecido: 5,
-            valorCP: 15.99,
-            valorCPK: 12.99 // Cambiado de valorCPL a valorCPK
+            indiceLote: 12,
+            indiceEstablecido: 12,
+            valorCP: 1,
+            valorCPK: 0.95 // Cambiado de valorCPL a valorCPK
         },
         {
-            nombre: "Destornillador",
+            nombre: "Barras de Metal",
             lote: 2,
-            indiceLote: 8,
-            indiceEstablecido: 4,
-            valorCP: 8.49,
-            valorCPK: 7.99 // Cambiado de valorCPL a valorCPK
+            indiceLote: 12,
+            indiceEstablecido: 12,
+            valorCP: 1,
+            valorCPK: 1 // Cambiado de valorCPL a valorCPK
         },
         {
-            nombre: "Tornillo",
+            nombre: "Barras de Metal",
             lote: 3,
             indiceLote: 12,
-            indiceEstablecido: 6,
-            valorCP: 0.25,
-            valorCPK: 0.20 // Cambiado de valorCPL a valorCPK
+            indiceEstablecido: 12,
+            valorCP: 1,
+            valorCPK: 1 // Cambiado de valorCPL a valorCPK
         },
         {
-            nombre: "Sierra eléctrica",
-            lote: 4,
-            indiceLote: 15,
-            indiceEstablecido: 7,
-            valorCP: 99.99,
-            valorCPK: 89.99 // Cambiado de valorCPL a valorCPK
-        },
-        {
-            nombre: "Pintura blanca",
-            lote: 5,
-            indiceLote: 20,
+            nombre: "Vigas de Metal",
+            lote: 1,
+            indiceLote: 8,
             indiceEstablecido: 10,
-            valorCP: 12.5,
-            valorCPK: 10.99 // Cambiado de valorCPL a valorCPK
+            valorCP: 0.8,
+            valorCPK: 0.84 // Cambiado de valorCPL a valorCPK
         },
         {
-            nombre: "Cinta métrica",
-            lote: 6,
+            nombre: "Vigas de Metal",
+            lote: 2,
+            indiceLote: 10,
+            indiceEstablecido: 10,
+            valorCP: 1,
+            valorCPK: 1 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Vigas de Metal",
+            lote: 3,
             indiceLote: 9,
-            indiceEstablecido: 3,
-            valorCP: 6.99,
-            valorCPK: 5.99 // Cambiado de valorCPL a valorCPK
+            indiceEstablecido: 10,
+            valorCP: 0.9,
+            valorCPK: 0.9 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Calderos",
+            lote: 1,
+            indiceLote: 20,
+            indiceEstablecido: 20,
+            valorCP: 1,
+            valorCPK: 0.9 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Calderos",
+            lote: 2,
+            indiceLote: 14,
+            indiceEstablecido: 20,
+            valorCP: 0.7,
+            valorCPK: 0.65 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Calderos",
+            lote: 2,
+            indiceLote: 20,
+            indiceEstablecido: 20,
+            valorCP: 1,
+            valorCPK: 1 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Llaves",
+            lote: 1,
+            indiceLote: 27,
+            indiceEstablecido: 30,
+            valorCP: 0.9,
+            valorCPK: 0.9 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Llaves",
+            lote: 2,
+            indiceLote: 30,
+            indiceEstablecido: 30,
+            valorCP: 1,
+            valorCPK: 1 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Llaves",
+            lote: 3,
+            indiceLote: 27,
+            indiceEstablecido: 30,
+            valorCP: 0.9,
+            valorCPK: 0.9 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Tenedores",
+            lote: 1,
+            indiceLote: 7,
+            indiceEstablecido: 10,
+            valorCP: 0.7,
+            valorCPK: 0.8 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Tenedores",
+            lote: 2,
+            indiceLote: 9,
+            indiceEstablecido: 10,
+            valorCP: 0.9,
+            valorCPK: 0.86 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Tenedores",
+            lote: 3,
+            indiceLote: 8,
+            indiceEstablecido: 10,
+            valorCP: 0.8,
+            valorCPK: 0.8 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Cucharas",
+            lote: 1,
+            indiceLote: 10,
+            indiceEstablecido: 10,
+            valorCP: 1,
+            valorCPK: 1 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Cucharas",
+            lote: 2,
+            indiceLote: 10,
+            indiceEstablecido: 10,
+            valorCP: 1,
+            valorCPK: 0.9 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Cucharas",
+            lote: 3,
+            indiceLote: 10,
+            indiceEstablecido: 10,
+            valorCP: 1,
+            valorCPK: 1 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Cuchillos",
+            lote: 1,
+            indiceLote: 10,
+            indiceEstablecido: 10,
+            valorCP: 1,
+            valorCPK: 1 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Cuchillos",
+            lote: 2,
+            indiceLote: 9,
+            indiceEstablecido: 10,
+            valorCP: 0.9,
+            valorCPK: 0.85 // Cambiado de valorCPL a valorCPK
+        },
+        {
+            nombre: "Cuchillos",
+            lote: 3,
+            indiceLote: 10,
+            indiceEstablecido: 10,
+            valorCP: 1,
+            valorCPK: 1 // Cambiado de valorCPL a valorCPK
         }
     ]
 };
@@ -74,7 +194,8 @@ const requests: { myRequests: Request[] } = {
 export default function PageCPS() {
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const value: number = 1.6
+    const CPPromedio: number = 0.9085
+    const CPKromedio: number = 0.89
 
     return (
 
@@ -83,8 +204,8 @@ export default function PageCPS() {
             <section className="grid grid-cols-2 p-8 gap-8 w-full max-w-6xl mx-auto">
                 <BTCP />
                 <BTCPK />
-                <CardValue analysis="CP" value={`${value}k`} />
-                <CardValue analysis="CPK" value={`$${value}M`} />
+                <CardValue analysis="CP-Promedio" value={`${CPPromedio}`} />
+                <CardValue analysis="CPK-Promedio" value={`${CPKromedio}`} />
             </section>
             <section className="p-5"> {/* Table */}
                 <div className=" w-full flex mb-3 justify-between">

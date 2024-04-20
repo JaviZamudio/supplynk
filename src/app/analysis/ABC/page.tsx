@@ -3,11 +3,13 @@
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button, Divider } from "@nextui-org/react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Chip } from "@nextui-org/react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Checkbox, Input, Link } from "@nextui-org/react";
+import {useState} from "react"
 
 import Header from "@/components/Header";
 import BTAI from "@/components/charts/BTAI";
 import LTAH from "@/components/charts/LTAH";
 import DTAP from "@/components/charts/DTAP";
+
 
 interface Request {
   nombre: string;
@@ -27,69 +29,80 @@ const requests: {
 } = {
   myRequests: [
     {
-      "nombre": "Martillo",
-      "unidad_Almacenada": 100,
-      "precio": 15.99,
-      "unidad_Vendida": 70,
-      "porcentaje_Ganancia": 25,
+      "nombre": "Barras de Metal",
+      "unidad_Almacenada": 2000,
+      "precio": 920,
+      "unidad_Vendida": 1000,
+      "porcentaje_Ganancia": 23,
       "clasificacion": {
         "text": "Clasificacion A",
         "color": "success"
       }
     },
     {
-      "nombre": "Destornillador",
-      "unidad_Almacenada": 150,
-      "precio": 8.49,
-      "unidad_Vendida": 120,
-      "porcentaje_Ganancia": 20,
+      "nombre": "Vigas de Metal",
+      "unidad_Almacenada": 300,
+      "precio": 8400,
+      "unidad_Vendida": 100,
+      "porcentaje_Ganancia": 21,
       "clasificacion": {
         "text": "Clasificacion A",
         "color": "success"
       }
     },
     {
-      "nombre": "Tornillo",
-      "unidad_Almacenada": 1000,
-      "precio": 0.25,
-      "unidad_Vendida": 800,
-      "porcentaje_Ganancia": 30,
+      "nombre": "Calderas",
+      "unidad_Almacenada": 20,
+      "precio": 84000,
+      "unidad_Vendida": 10,
+      "porcentaje_Ganancia": 21,
+      "clasificacion": {
+        "text": "Clasificacion A",
+        "color": "success"
+      }
+    },
+    {
+      "nombre": "Llaves",
+      "unidad_Almacenada": 15000,
+      "precio": 56,
+      "unidad_Vendida": 10000,
+      "porcentaje_Ganancia": 14,
       "clasificacion": {
         "text": "Clasificacion B",
         "color": "secondary"
       }
     },
     {
-      "nombre": "Sierra eléctrica",
-      "unidad_Almacenada": 20,
-      "precio": 99.99,
-      "unidad_Vendida": 15,
-      "porcentaje_Ganancia": 35,
+      "nombre": "Tenedores",
+      "unidad_Almacenada": 15000,
+      "precio": 32,
+      "unidad_Vendida": 10000,
+      "porcentaje_Ganancia": 8,
       "clasificacion": {
-        "text": "Clasificacion A",
-        "color": "success"
+        "text": "Clasificacion B",
+        "color": "secondary"
       }
     },
     {
-      "nombre": "Pintura blanca",
-      "unidad_Almacenada": 200,
-      "precio": 12.5,
-      "unidad_Vendida": 150,
-      "porcentaje_Ganancia": 20,
+      "nombre": "Cucharas",
+      "unidad_Almacenada": 12500,
+      "precio": 28,
+      "unidad_Vendida": 10000,
+      "porcentaje_Ganancia": 7,
       "clasificacion": {
         "text": "Clasificacion C",
         "color": "warning"
       }
     },
     {
-      "nombre": "Cinta métrica",
-      "unidad_Almacenada": 80,
-      "precio": 6.99,
-      "unidad_Vendida": 60,
-      "porcentaje_Ganancia": 25,
+      "nombre": "Cuchillos",
+      "unidad_Almacenada": 12500,
+      "precio": 24,
+      "unidad_Vendida": 10000,
+      "porcentaje_Ganancia": 6,
       "clasificacion": {
-        "text": "Clasificacion A",
-        "color": "success"
+        "text": "Clasificacion C",
+        "color": "warning"
       }
     }
   ]
@@ -100,6 +113,23 @@ const requests: {
 export default function PageABC() {
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [selectedOption, setSelectedOption] = useState<string>('');
+
+  const handleOptionSelect = (option: string) => {
+    switch (option) {
+      case "1 mes":
+        setSelectedOption("1 mes");
+        break;
+      case "2 meses":
+        setSelectedOption("2 meses");
+        break;
+      case "3 meses":
+        setSelectedOption("3 meses");
+        break;
+      default:
+        setSelectedOption("");
+    }
+  };
 
   return (
     <>
@@ -122,21 +152,21 @@ export default function PageABC() {
                 </span>
               }
             >
-              Time
+              {selectedOption || "Time"}
             </Button>
           </DropdownTrigger>
           <DropdownMenu aria-label="Static Actions" className="rounded-none">
-            <DropdownItem key="new">1 mes</DropdownItem>
-            <DropdownItem key="copy">2 meses</DropdownItem>
-            <DropdownItem key="edit">3 meses</DropdownItem>
+            <DropdownItem key="new" onClick={() => handleOptionSelect("1 mes")}>1 mes</DropdownItem>
+            <DropdownItem key="copy" onClick={() => handleOptionSelect("2 meses")}>2 meses</DropdownItem>
+            <DropdownItem key="edit" onClick={() => handleOptionSelect("3 meses")}>3 meses</DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </section>
 
       <section className="grid grid-cols-2 gap-8 p-8 max-w-5xl mx-auto">  {/* chars*/}
-        <BTAI />
-        <DTAP />
-        <LTAH />
+        <BTAI caseData={selectedOption}/>
+        <DTAP caseData={selectedOption}/>
+        <LTAH caseData={selectedOption}/>
       </section>
 
       <Divider className="my-4" />

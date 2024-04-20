@@ -21,11 +21,11 @@ const options = {
 };
 
 const data = {
-    labels: ['Tornillos', 'Placas', 'Destornillador', 'Taquetes'],
+    labels: ['Barras de Metal', 'Vigas de Metal', 'Calderos', 'Llaves', 'Tenedores', 'Cucharas', 'Cuchillos'],
     datasets: [
         {
             label: 'Primer Lote',
-            data: [0.8, 1, 0.9, 1.5],
+            data: [1, 0.8, 1, 0.9, 0.7, 1, 1],
             backgroundColor: [
                 'rgba(5, 102, 141, 0.2)',
             ],
@@ -36,7 +36,7 @@ const data = {
         },
         {
             label: 'Segundo Lote',
-            data: [0.7, 1, 1, 1.3],
+            data: [1, 1, 0.7, 1, 0.9, 1, 0.9],
             backgroundColor: [
                 'rgba(103, 148, 54, 0.6)',
             ],
@@ -47,7 +47,7 @@ const data = {
         },
         {
             label: 'Tercer Lote',
-            data: [0.8, 0.7, 0.8, 1],
+            data: [1, 0.9, 1, 0.9, 0.8, 1, 1],
             backgroundColor: [
                 'rgba(235, 242, 42, 1)',
             ],

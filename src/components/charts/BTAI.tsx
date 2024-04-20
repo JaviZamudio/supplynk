@@ -5,7 +5,7 @@ import { Bar } from "react-chartjs-2";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 interface Props {
-    caseData: string;
+    caseData?: string;
 }
 
 const options = {

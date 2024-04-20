@@ -6,7 +6,7 @@ import { Line } from 'react-chartjs-2';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 interface Props {
-    caseData: string;
+    caseData?: string;
 }
 
 const options = {

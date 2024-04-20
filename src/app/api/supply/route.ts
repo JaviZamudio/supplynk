@@ -17,8 +17,8 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-    const { name, description, stock, classification } =
-        await request.json() as supply;
+    const { name, description, stock, classification, curUserId } =
+        await request.json();
 
     if (!name || !description || !stock || !classification) {
         return NextResponse.json({
@@ -33,7 +33,10 @@ export async function POST(request: NextRequest) {
                 name,
                 description,
                 stock,
-                classification
+                classification,
+                user: {
+                    connect: { id: curUserId }
+                }
             }
         })
 

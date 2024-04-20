@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
                 stock,
                 classification,
                 user: {
-                    connect: { id: curUserId }
+                    connect: { id: curUserId as string }
                 }
             }
         })
